@@ -17,6 +17,7 @@ public class TicTacToe {
            ComputerLetter='X';
 
        System.out.println("Computer Letter is: " + ComputerLetter+" User Letter is : " + UserLetter);
+       showBoard(board);
    }
 
     public static char chooseLetter(){
@@ -25,6 +26,16 @@ public class TicTacToe {
         System.out.print("Enter your symbol");
         symbol=UserInput.next().toUpperCase().charAt(0);
         return symbol;
+    }
+
+    public static void showBoard(char[] board)
+    {
+        System.out.println("\n" + board[1] + "  |  "  + board[2] + "  |  " + board[3]);
+        System.out.println("--------------");
+        System.out.println(" " + board[4] + "  |  "  + board[5] + "  |  " + board[6]);
+        System.out.println("--------------");
+        System.out.println(" " + board[7] + "  |  "  +board[8] + "  |  " + board[9]);
+        System.out.println("--------------");
     }
 
 
