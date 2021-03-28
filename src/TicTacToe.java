@@ -1,7 +1,7 @@
-import javax.swing.*;
-import java.util.Locale;
 import java.util.Scanner;
 import java.util.Arrays;
+import java.util.Random;
+
 
 public class TicTacToe {
 
@@ -19,17 +19,42 @@ public class TicTacToe {
            ComputerLetter='X';
 
        System.out.println("Computer Letter is: " + ComputerLetter+" User Letter is : " + UserLetter);
+       System.out.println("Current Board");
        showBoard(board);
-       int userMove = getUserMove(board);
+       int first=toss();
+       if(first==1) {
 
+           getUserMove(board,UserLetter);
+       }
+       else {
+
+           getUserMove(board,ComputerLetter);
+       }
+       System.out.println("Current Board:");
        showBoard(board);
    }
 
-    public static int getUserMove(char[] board) {
+    public static int toss() {
+
+        Random random=new Random();
+        int value = 1+random.nextInt(2-1+1);
+        if (value==1) {
+
+            System.out.println("User will play first");
+            return value;
+        }
+        else {
+
+            System.out.println("Computer will play first ");
+            return value;
+        }
+    }
+
+    public static void getUserMove(char[] board, char symbol) {
         Scanner sc = new Scanner(System.in);
         Integer[] validCells = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
-        Boolean occupied = false;
+        Boolean occupied;
         while (occupied = false) {
             System.out.println("What is your next move ? (1-9)");
             int index = sc.nextInt();
@@ -37,11 +62,7 @@ public class TicTacToe {
 
                 board[index] = symbol;
                 occupied = true;
-            } else {
-                System.out.println("not between 1-9 or space is not free. Again enter between 1-9");
-
             }
-
 
         }
     }
