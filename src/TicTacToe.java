@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.Arrays;
@@ -28,14 +29,25 @@ public class TicTacToe {
         Scanner sc = new Scanner(System.in);
         Integer[] validCells = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
-
-        while (true) {
+        Boolean occupied = false;
+        while (occupied = false) {
             System.out.println("What is your next move ? (1-9)");
             int index = sc.nextInt();
-            if (Arrays.asList(validCells).contains(index))
-                return index;
+            if (Arrays.asList(validCells).contains(index) && isSpaceFree(board, index)) {
+
+                board[index] = symbol;
+                occupied = true;
+            } else {
+                System.out.println("not between 1-9 or space is not free. Again enter between 1-9");
+
+            }
+
 
         }
+    }
+
+    private static boolean isSpaceFree(char[] board, int index) {
+        return board[index] == ' ';
     }
 
     public static char chooseLetter() {
