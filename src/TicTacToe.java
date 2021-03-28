@@ -1,5 +1,6 @@
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class TicTacToe {
 
@@ -18,9 +19,26 @@ public class TicTacToe {
 
        System.out.println("Computer Letter is: " + ComputerLetter+" User Letter is : " + UserLetter);
        showBoard(board);
+       int userMove = getUserMove(board);
+
+       showBoard(board);
    }
 
-    public static char chooseLetter(){
+    public static int getUserMove(char[] board) {
+        Scanner sc = new Scanner(System.in);
+        Integer[] validCells = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+
+        while (true) {
+            System.out.println("What is your next move ? (1-9)");
+            int index = sc.nextInt();
+            if (Arrays.asList(validCells).contains(index))
+                return index;
+
+        }
+    }
+
+    public static char chooseLetter() {
         char symbol;
         Scanner UserInput = new Scanner(System.in);
         System.out.print("Enter your symbol");
@@ -37,6 +55,8 @@ public class TicTacToe {
         System.out.println(" " + board[7] + "  |  "  +board[8] + "  |  " + board[9]);
         System.out.println("--------------");
     }
+
+
 
 
     public static char[] createBoard() {
